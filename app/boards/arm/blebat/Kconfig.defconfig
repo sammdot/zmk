@@ -73,6 +73,6 @@ config LVGL_DPI
 
 endif
 
-source "/home/steven/gitproj/zmk/app/steno/Kconfig"
+source "$srctree/../app/steno/Kconfig"
 
 endif # BOARD_BLEBAT
