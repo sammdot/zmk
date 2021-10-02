@@ -17,6 +17,12 @@
 
 #define COLLECTION_REPORT 0x03
 
+#define ZMK_HID_KEYBOARD_NKRO_SIZE 6
+
+#define ZMK_HID_CONSUMER_NKRO_SIZE 6
+
+#define ZMK_HID_PLOVER_SIZE 8
+
 static const uint8_t zmk_hid_report_desc[] = {
     HID_USAGE_PAGE(HID_USAGE_GEN_DESKTOP),
     HID_USAGE(HID_USAGE_GD_KEYBOARD),
@@ -142,7 +148,7 @@ struct zmk_hid_consumer_report {
 } __packed;
 
 struct zmk_hid_plover_report_body {
-    uint8_t buttons[8]; // FIXME: don't hard code
+    uint8_t buttons[ZMK_HID_PLOVER_SIZE];
 } __packed;
 
 struct zmk_hid_plover_report {
