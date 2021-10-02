@@ -10,12 +10,18 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/hid.h>
 #include <dt-bindings/zmk/modifiers.h>
 
+// As a workaround for limitations in how some operating systems expose hid
+// descriptors to user level code the Plover HID protocol hard codes a report
+// id of 0x50 so that the plover side can distinguish between Plover HID
+// reports and other reports from the device.
+#define PLOVER_HID_REPORT_ID 0x50
+
 static struct zmk_hid_keyboard_report keyboard_report = {
     .report_id = 1, .body = {.modifiers = 0, ._reserved = 0, .keys = {0}}};
 
 static struct zmk_hid_consumer_report consumer_report = {.report_id = 2, .body = {.keys = {0}}};
 
-static struct zmk_hid_plover_report plover_report = {.report_id = 0x50, .body = {.buttons = {0}}};
+static struct zmk_hid_plover_report plover_report = {.report_id = PLOVER_HID_REPORT_ID, .body = {.buttons = {0}}};
 
 // Keep track of how often a modifier was pressed.
 // Only release the modifier if the count is 0.
