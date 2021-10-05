@@ -130,6 +130,7 @@ static int send_consumer_report() {
     }
 }
 
+#if IS_ENABLED(CONFIG_ZMK_PLOVER_HID)
 static int send_plover_report() {
     struct zmk_hid_plover_report *plover_report = zmk_hid_get_plover_report();
     switch (current_endpoint) {
@@ -156,6 +157,7 @@ static int send_plover_report() {
         return -ENOTSUP;
     }
 }
+#endif /* IS_ENABLED(CONFIG_ZMK_PLOVER_HID) */
 
 int zmk_endpoints_send_report(uint16_t usage_page) {
 
