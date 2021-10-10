@@ -107,6 +107,9 @@ static const uint8_t zmk_hid_report_desc[] = {
     /* REPORT ID (80) */
     HID_GI_REPORT_ID,
     0x50,
+    /* LOGICAL MINIMUM (0) */
+    HID_GI_LOGICAL_MIN(1),
+    0,
     /* LOGICAL MAXIMUM (1) */
     HID_GI_LOGICAL_MAX(1),
     1,
