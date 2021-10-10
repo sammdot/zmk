@@ -97,18 +97,38 @@ static const uint8_t zmk_hid_report_desc[] = {
     HID_END_COLLECTION,
 
 #if IS_ENABLED(CONFIG_ZMK_PLOVER_HID)
-    0x06, 0x50, 0xff,              // UsagePage (65360)
-    0x0a, 0x56, 0x4c,              // Usage (19542)
-    0xa1, 0x02,                    // Collection (Logical)
-    0x85, 0x50,                    //     ReportID (80)
-    0x25, 0x01,                    //     LogicalMaximum (1)
-    0x75, 0x01,                    //     ReportSize (1)
-    0x95, 0x40,                    //     ReportCount (64)
-    0x05, 0x0a,                    //     UsagePage (ordinal)
-    0x19, 0x00,                    //     UsageMinimum (Ordinal(0))
-    0x29, 0x3f,                    //     UsageMaximum (Ordinal(63))
-    0x81, 0x02,                    //     Input (Variable)
-    0xc0,                          // EndCollection
+    /* USAGE (\xffPLV) */
+    HID_GLOBAL_ITEM(ITEM_TAG_USAGE_PAGE, 2),
+    0x50, 0xff,
+    HID_LOCAL_ITEM(ITEM_TAG_USAGE, 2),
+    0x56, 0x4c,
+    HID_MI_COLLECTION,
+    HID_COLLECTION_APPLICATION,
+    /* REPORT ID (80) */
+    HID_GI_REPORT_ID,
+    0x50,
+    /* LOGICAL MAXIMUM (1) */
+    HID_GI_LOGICAL_MAX(1),
+    1,
+    /* REPORT SIZE (1) */
+    HID_GI_REPORT_SIZE,
+    1,
+    /* REPORT COUNT (64) */
+    HID_GI_REPORT_COUNT,
+    64,
+    /* USAGE PAGE (Ordinal) */
+    HID_GI_USAGE_PAGE,
+    0x0a,
+    /* USAGE MINIMUM (0) */
+    HID_LI_USAGE_MIN(1),
+    0,
+    /* USAGE MAXIMUM (63) */
+    HID_LI_USAGE_MAX(1),
+    63,
+    /* INPUT (Data,Var,Abs) */
+    HID_MI_INPUT,
+    0x02,
+    HID_MI_COLLECTION_END,
 #endif /* IS_ENABLED(CONFIG_ZMK_PLOVER_HID) */
 };
 
