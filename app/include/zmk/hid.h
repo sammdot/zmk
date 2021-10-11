@@ -109,7 +109,7 @@ static const uint8_t zmk_hid_report_desc[] = {
     HID_LOCAL_ITEM(ITEM_TAG_USAGE, 2),
     0x56, 0x4c,
     HID_MI_COLLECTION,
-    HID_COLLECTION_APPLICATION,
+    COLLECTION_APPLICATION,
     /* REPORT ID (80) */
     HID_GI_REPORT_ID,
     PLOVER_HID_REPORT_ID,
