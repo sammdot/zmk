@@ -23,6 +23,12 @@
 
 #define ZMK_HID_PLOVER_SIZE 8
 
+// As a workaround for limitations in how some operating systems expose hid
+// descriptors to user level code the Plover HID protocol hard codes a report
+// id of 0x50 so that the plover side can distinguish between Plover HID
+// reports and other reports from the device.
+#define PLOVER_HID_REPORT_ID 0x50
+
 static const uint8_t zmk_hid_report_desc[] = {
     HID_USAGE_PAGE(HID_USAGE_GEN_DESKTOP),
     HID_USAGE(HID_USAGE_GD_KEYBOARD),
@@ -106,7 +112,7 @@ static const uint8_t zmk_hid_report_desc[] = {
     HID_COLLECTION_APPLICATION,
     /* REPORT ID (80) */
     HID_GI_REPORT_ID,
-    0x50,
+    PLOVER_HID_REPORT_ID,
     /* LOGICAL MINIMUM (0) */
     HID_GI_LOGICAL_MIN(1),
     0,
