@@ -16,7 +16,11 @@ jobs:
   integration_test:
     runs-on: ubuntu-latest
     container:
+<<<<<<< HEAD
       image: zmkfirmware/zmk-build-arm:2.5-branch-20210617193230-2.5.0-0.12.4-5d9cfa5ab7a8-947598130
+=======
+      image: zmkfirmware/zmk-build-arm:2.5
+>>>>>>> dnaq/plover-hid-hog-attempt
     steps:
       - name: Checkout
         uses: actions/checkout@v2
