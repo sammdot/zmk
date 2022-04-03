@@ -20,11 +20,13 @@ USB and BLE and doesn't require any driver support from the operating system.
 ### Configuration
 
 First enable the Plover HID protocol in your keymaps `.conf` file by adding the line:
+
 ```
 CONFIG_ZMK_PLOVER_HID=y
 ```
 
 Then add normal keypress behaviors to your keymap, but with usage codes that start with `PLV_`, .e.g.
+
 ```
 plover_layer {
     bindings = <
