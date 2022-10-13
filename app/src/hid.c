@@ -224,6 +224,8 @@ int zmk_hid_press(uint32_t usage) {
         return zmk_hid_keyboard_press(ZMK_HID_USAGE_ID(usage));
     case HID_USAGE_CONSUMER:
         return zmk_hid_consumer_press(ZMK_HID_USAGE_ID(usage));
+    case HID_USAGE_VENDOR_PLOVER & 0xFF:
+        return zmk_hid_plover_press(ZMK_HID_USAGE_ID(usage));
     }
     return -EINVAL;
 }
@@ -234,6 +236,8 @@ int zmk_hid_release(uint32_t usage) {
         return zmk_hid_keyboard_release(ZMK_HID_USAGE_ID(usage));
     case HID_USAGE_CONSUMER:
         return zmk_hid_consumer_release(ZMK_HID_USAGE_ID(usage));
+    case HID_USAGE_VENDOR_PLOVER & 0xFF:
+        return zmk_hid_plover_release(ZMK_HID_USAGE_ID(usage));
     }
     return -EINVAL;
 }
